@@ -3,6 +3,8 @@ import ProductList from "./ProductList";
 import Categories from "./Categories";
 import items from "./data";
 
+//Tugas sampai nomer 5
+
 //Get exist categories
 const existCategories = [];
 //create set of unique category
@@ -32,7 +34,6 @@ function App() {
       </section>
       {/* fill with state name*/}
       <ProductList items={[]} />
-      <p>test</p>
     </main>
   );
 }
