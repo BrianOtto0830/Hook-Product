@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import ProductList from "./ProductList";
 import Categories from "./Categories";
 import items from "./data";
+import { PriceFilter } from "./components/PriceFilter";
 
 //Tugas sampai nomer 5
 
 //Get exist categories
-const existCategories = [];
+const existCategories = items.map((item) => item.category);
 //create set of unique category
-const myset = [];
+const myset = [...new Set(existCategories)];
 //create array categories contains 'all' and exist categories
-const allCategories = [];
+const allCategories = ['all', ...myset];
 
 function App() {
   //create state for product items
@@ -20,6 +21,25 @@ function App() {
 
   const filterItems = (category) => {
     //WRITE YOUR CODE
+    if (category === 'all') {
+      setProductItems(items);
+    } else {
+      const newItems = items.filter((item) => item.category === category);
+      setProductItems(newItems);
+    }
+  };
+
+  //soal nomer 5 untuk filter price
+  const listPrices = [20000, 50000, 100000, 200000, 'all'];
+
+  //filter untuk price
+  const filterByPrice = (price) => {
+    if (price === 'all') {
+      setProductItems(items);
+    } else {
+      const newItems = items.filter((item) => item.price < price);
+      setProductItems(newItems);
+    }
   };
 
   return (
@@ -30,10 +50,12 @@ function App() {
           <div className="underline"></div>
         </div>
         {/* fill with state name*/}
-        <Categories categories={[]} filterItems={filterItems} />
+        <Categories categories={categories} filterItems={filterItems} />
+        {/* Filter by prices */}
+        <PriceFilter prices={listPrices} filterByPrice={filterByPrice} />
       </section>
       {/* fill with state name*/}
-      <ProductList items={[]} />
+      <ProductList items={productItems} />
     </main>
   );
 }
