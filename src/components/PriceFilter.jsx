@@ -6,14 +6,15 @@ export const PriceFilter = ({prices, filterByPrice}) => {
         <div className="btn-container">
         {prices.map((price, index) => {
         return (
-          <button 
-            type="button" 
-            className="filter-btn" 
-            key={index}
-            onClick={() => filterByPrice(price)}
-          >
-            {price === 'all' ? 'All Prices' : `< Rp${price}`}
-          </button>
+
+            <button 
+                type="button" 
+                className="filter-btn" 
+                key={index}
+                onClick={() => filterByPrice(price)}
+            >
+                {price === 'all' ? 'All Prices' : `< Rp${price}`}
+            </button>
         );
         })}
     </div>
