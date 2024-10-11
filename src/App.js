@@ -40,6 +40,7 @@ function App() {
       const newItems = items.filter((item) => item.price < price);
       setProductItems(newItems);
     }
+    
   };
 
   return (

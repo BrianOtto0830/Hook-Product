@@ -1,12 +1,15 @@
 import React from 'react';
 
 const ProductList = ({items}) => {
+  if (items.length === 0) {
+    return <p>Item tidak ditemukan</p>;
+  }
   return (
     <div className='section-center'>
       {items.map((item) => {
         const {id, title, img, desc, price} = item;
         return (
-            <article key={id} className='menu-item'>
+            <article key={id} className='menu-item'> 
             <img src={img} alt={title} className='photo' />
             <div className='item-info'>
               <header>
